@@ -35,3 +35,4 @@ webpack.config.js
 .solution
 *.iml
 .mock_db/
+.build/

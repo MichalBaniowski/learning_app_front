@@ -9,7 +9,7 @@ import {
 import store from "../../redux/store";
 import MainLayout from "./MainLayout";
 import Home from "../sites/Home";
-import QuestionList from "../sites/question/QuestionList";
+import QuestionList from "../../containers/questions/QuestionList";
 
 const App = () => {
     return(

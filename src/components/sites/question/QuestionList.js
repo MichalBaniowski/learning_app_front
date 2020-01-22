@@ -1,10 +1,12 @@
 import React from "react";
 
-const QuestionList = () => {
+const QuestionList = ({questions}) => {
     return(
-        <div>
-            Lista pytań
-        </div>
+        <ul>
+            {questions.map(question => {
+                return <li key={question.id}>{question.question}</li>
+            })}
+        </ul>
     )
 };
 

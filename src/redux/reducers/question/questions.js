@@ -22,6 +22,61 @@ const initialState = [
             "d": "Tak"
         },
         "correctAnswer": "d"
+    },
+    {
+        "id": 3,
+        "question": "Gdzie jest Andrzej",
+        "possibleAnswers": {
+            "a": "w dupie",
+            "b": "Nie wiem",
+            "c": "Na wakacjach",
+            "d": "Tak"
+        },
+        "correctAnswer": "d"
+    },
+    {
+        "id": 4,
+        "question": "Karton mleka?",
+        "possibleAnswers": {
+            "a": "Tak",
+            "b": "nie",
+            "c": "Kaczka",
+            "d": "Może"
+        },
+        "correctAnswer": "d"
+    },
+    {
+        "id": 5,
+        "question": "Kiedy matka ma rację",
+        "possibleAnswers": {
+            "a": "zawsze",
+            "b": "Jabłko",
+            "c": "Po fakcie",
+            "d": "Jutro"
+        },
+        "correctAnswer": "a"
+    },
+    {
+        "id": 6,
+        "question": "Masz już dość",
+        "possibleAnswers": {
+            "a": "tak",
+            "b": "nie",
+            "c": "może",
+            "d": "chyba"
+        },
+        "correctAnswer": "c"
+    },
+    {
+        "id": 7,
+        "question": "Jak można być ślepym",
+        "possibleAnswers": {
+            "a": "można mieć pecha",
+            "b": "można ",
+            "c": "Na drutach",
+            "d": "Tak"
+        },
+        "correctAnswer": "d"
     }
 ];
 

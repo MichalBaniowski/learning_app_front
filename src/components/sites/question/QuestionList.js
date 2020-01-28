@@ -1,35 +1,77 @@
-import React from "react";
+import React, {useState} from "react";
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
 import AccordionCollapse from "react-bootstrap/AccordionCollapse";
 import ListGroup from "react-bootstrap/ListGroup";
 import ListGroupItem from "react-bootstrap/ListGroupItem";
-
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
 
 
 const QuestionList = ({questions}) => {
-    return(
+
+    return (
         <Accordion>
             {questions.map(question => {
-                return <Card key={question.id}>
-                        <Accordion.Toggle as={Card.Header} eventKey={question.id}>
-                            {question.question}
-                        </Accordion.Toggle>
-                        <AccordionCollapse eventKey={question.id}>
-                            <Card.Body>
-                                <ListGroup>
-                                    {Object.entries(question.possibleAnswers).map(keyValue => {
-                                        return <ListGroupItem>
-                                            {keyValue[0]}:  {keyValue[1]}
-                                        </ListGroupItem>
-                                    })}
-                                </ListGroup>
-                            </Card.Body>
-                        </AccordionCollapse>
-                </Card>
+                return <QuestionCard key={question.id} question={question}/>
             })}
         </Accordion>
     )
+};
+
+const QuestionCard = ({question}) => {
+
+    const activeQuestion = 'active-question';
+    const [questionState, setQuestionState] = useState({
+        active: false,
+        questionClass: ''
+    });
+
+    const onClickQuestion = () => {
+        console.log('dupa');
+        setQuestionState({
+            active: !questionState.active,
+            questionClass: questionState.active ? '' : activeQuestion
+        })
+    };
+
+    return <Card>
+        <Accordion.Toggle as={Card.Header}
+                          eventKey={question.id}
+                          className={questionState.questionClass}
+                          onClick={onClickQuestion}>
+            {question.question}
+        </Accordion.Toggle>
+        <AccordionCollapse eventKey={question.id}>
+            <Card.Body>
+                <Row>
+                    <Col md={6}>
+                        <ListGroup>
+                            {Object.entries(question.possibleAnswers).map((keyValue, index) => {
+                                return <ListGroupItem key={index} variant="secondary">
+                                    {keyValue[0]}: {keyValue[1]}
+                                </ListGroupItem>
+                            })}
+                        </ListGroup>
+                    </Col>
+                    <Col md={6} className="d-flex flex-column">
+                        <ButtonGroup>
+                            <Button variant="outline-secondary">Button</Button>
+                            <Button variant="outline-secondary">Button</Button>
+                            <Button variant="outline-secondary">Button</Button>
+                            <Button variant="outline-secondary">Button</Button>
+                        </ButtonGroup>
+                        <Container>
+                            Statystyki
+                        </Container>
+                    </Col>
+                </Row>
+            </Card.Body>
+        </AccordionCollapse>
+    </Card>
 };
 
 export default QuestionList;

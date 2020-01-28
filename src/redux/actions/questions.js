@@ -1,5 +1,6 @@
 const SAVE_QUESTION = 'SAVE_QUESTION';
 const REMOVE_QUESTION = 'REMOVE_QUESTION';
+const LOAD_QUESTIONS = 'LOAD_QUESTIONS';
 
 const save = (question) => {
     return {
@@ -15,4 +16,11 @@ const remove = (id) => {
     }
 };
 
-export {SAVE_QUESTION, REMOVE_QUESTION, save, remove};
+const loadQuestions = (questions) => {
+    return {
+        type: LOAD_QUESTIONS,
+        payload: questions
+    }
+};
+
+export {SAVE_QUESTION, REMOVE_QUESTION, LOAD_QUESTIONS, save, remove, loadQuestions};

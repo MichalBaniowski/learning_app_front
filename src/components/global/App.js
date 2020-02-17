@@ -10,6 +10,7 @@ import store from "../../redux/store";
 import MainLayout from "./MainLayout";
 import Home from "../sites/Home";
 import Questions from "../../containers/questions/Questions";
+import Error from "../sites/errors/Error";
 
 const App = () => {
     return(
@@ -19,6 +20,7 @@ const App = () => {
                     <Switch>
                         <Route exact path='/home' component={Home}/>
                         <Route exact path='/questions' component={Questions}/>
+                        <Route component={Error}/>
                     </Switch>
                 </MainLayout>
             </Router>

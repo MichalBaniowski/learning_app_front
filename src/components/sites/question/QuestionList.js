@@ -12,7 +12,6 @@ import Container from "react-bootstrap/Container";
 
 
 const QuestionList = ({questions}) => {
-
     return (
         <Accordion>
             {questions.map(question => {
@@ -31,7 +30,6 @@ const QuestionCard = ({question}) => {
     });
 
     const onClickQuestion = () => {
-        console.log('dupa');
         setQuestionState({
             active: !questionState.active,
             questionClass: questionState.active ? '' : activeQuestion
@@ -43,7 +41,16 @@ const QuestionCard = ({question}) => {
                           eventKey={question.id}
                           className={questionState.questionClass}
                           onClick={onClickQuestion}>
-            {question.question}
+            <Row>
+                <Col sm = '8'>
+                    {question.question}
+                </Col>
+                <Col sm = '4'>
+                    {question.categories.map(category => {
+                        return category + ' ';
+                    })}
+                </Col>
+            </Row>
         </Accordion.Toggle>
         <AccordionCollapse eventKey={question.id}>
             <Card.Body>

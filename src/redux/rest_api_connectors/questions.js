@@ -1,14 +1,18 @@
-import { loadQuestions } from "../actions/questions";
+import { startFetchingQuestions, fetchingSuccess, fetchingError } from "../actions/questions";
 
 const API = "http://localhost:3000/questions";
 
 const fetchQuestions = () => (dispatch) => {
     try {
+        dispatch(startFetchingQuestions());
         fetch(API)
             .then(data => data.json())
-            .then(questions => dispatch(loadQuestions(questions)));
+            .then(questions => {
+                dispatch(fetchingSuccess(questions));
+            })
+            .catch((error) => dispatch(fetchingError(error)));
     } catch (error) {
-        console.log(error);
+        dispatch(fetchingError(error));
     }
 };
 

@@ -1,26 +1,26 @@
-const SAVE_QUESTION = 'SAVE_QUESTION';
-const REMOVE_QUESTION = 'REMOVE_QUESTION';
-const LOAD_QUESTIONS = 'LOAD_QUESTIONS';
+const START_FETCHING_QUESTIONS = 'LOAD_QUESTIONS';
+const FETCHING_SUCCESS = 'FETCHING_SUCCESS';
+const FETCHING_ERROR = 'FETCHING_ERROR';
 
-const save = (question) => {
+const startFetchingQuestions = () => {
     return {
-        type: SAVE_QUESTION,
-        payload: question
+        type: START_FETCHING_QUESTIONS
     }
 };
 
-const remove = (id) => {
+const fetchingSuccess = (questions) => {
     return {
-        type: REMOVE_QUESTION,
-        payload: id
-    }
-};
-
-const loadQuestions = (questions) => {
-    return {
-        type: LOAD_QUESTIONS,
+        type: FETCHING_SUCCESS,
         payload: questions
     }
 };
 
-export {SAVE_QUESTION, REMOVE_QUESTION, LOAD_QUESTIONS, save, remove, loadQuestions};
+const fetchingError = (error) => {
+    return {
+        type: FETCHING_ERROR,
+        payload: error
+    }
+};
+
+export { START_FETCHING_QUESTIONS, FETCHING_SUCCESS, FETCHING_ERROR,
+    startFetchingQuestions, fetchingError, fetchingSuccess };

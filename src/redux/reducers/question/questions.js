@@ -1,18 +1,32 @@
-import { SAVE_QUESTION, REMOVE_QUESTION, LOAD_QUESTIONS } from "../../actions/questions";
+import { START_FETCHING_QUESTIONS, FETCHING_ERROR, FETCHING_SUCCESS } from "../../actions/questions";
 
-const initialState = [];
+const initialState = {
+    isFetching: false,
+    questions: [],
+    error: null
+};
 
 const questions = (state = initialState, {type, payload}) => {
     switch (type) {
-        case SAVE_QUESTION: {
-            return [...state, payload];
+        case START_FETCHING_QUESTIONS: {
+            return {
+                ...state,
+                isFetching: true
+            };
         }
-        case REMOVE_QUESTION: {
-            const newState = state.filter(q => q.id != payload);
-            return [...newState];
+        case FETCHING_SUCCESS: {
+            return {
+                isFetching: false,
+                questions: [...payload],
+                error: null
+            }
         }
-        case LOAD_QUESTIONS: {
-            return [...payload];
+        case FETCHING_ERROR: {
+            return {
+                isFetching: false,
+                questions: [],
+                error: payload
+            }
         }
         default: return state;
     }

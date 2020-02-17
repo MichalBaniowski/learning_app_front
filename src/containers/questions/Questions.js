@@ -3,10 +3,17 @@ import { connect } from 'react-redux';
 import { fetchQuestions } from "../../redux/rest_api_connectors/questions";
 import Questions from "../../components/sites/question/Qusetions";
 
-const mapDispatch = (dispatch) => {
+const mapState = ({questions, categories}) => {
     return {
-        fetchQuestions: () => fetchQuestions()(dispatch)
+        questions: questions,
+
     }
 };
 
-export default connect(null, mapDispatch)(Questions);
+const mapDispatch = (dispatch) => {
+    return {
+        fetchQuestions: () => fetchQuestions()(dispatch),
+    }
+};
+
+export default connect(mapState, mapDispatch)(Questions);

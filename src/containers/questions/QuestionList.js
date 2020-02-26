@@ -1,3 +1,4 @@
+import {connect} from "react-redux";
 import React, {useState} from "react";
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
@@ -9,16 +10,32 @@ import Col from "react-bootstrap/Col";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import Spinner from "../../components/utils/Spinner";
+import Error from "../../components/sites/Error";
+import messages from "../../../resources/localized_messages";
 
+const QuestionList = ({ questions }) => {
 
-const QuestionList = ({questions}) => {
-    return (
-        <Accordion>
-            {questions.map(question => {
+    const getContent = () => {
+        if (questions.isFetching) {
+            return (
+                <Spinner/>
+            )
+        }
+        if (questions.error) {
+            return (
+                <Error message={messages.fetchingError}/>
+            )
+        }
+        console.log(questions.questions, 'warchol');
+        return  <Accordion>
+            {questions.questions.map(question => {
                 return <QuestionCard key={question.id} question={question}/>
             })}
         </Accordion>
-    )
+    };
+
+    return getContent();
 };
 
 const QuestionCard = ({question}) => {
@@ -42,10 +59,10 @@ const QuestionCard = ({question}) => {
                           className={questionState.questionClass}
                           onClick={onClickQuestion}>
             <Row>
-                <Col sm = '8'>
+                <Col sm='8'>
                     {question.question}
                 </Col>
-                <Col sm = '4'>
+                <Col sm='4'>
                     {question.categories.map(category => {
                         return category + ' ';
                     })}
@@ -81,4 +98,10 @@ const QuestionCard = ({question}) => {
     </Card>
 };
 
-export default QuestionList;
+const mapState = ({ questions }) => {
+    return {
+        questions: questions
+    }
+};
+
+export default connect(mapState)(QuestionList);

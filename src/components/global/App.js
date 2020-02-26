@@ -10,7 +10,7 @@ import store from "../../redux/store";
 import MainLayout from "./MainLayout";
 import Home from "../sites/Home";
 import Questions from "../../containers/questions/Questions";
-import Error from "../sites/errors/Error";
+import Error from "../sites/Error";
 
 const App = () => {
     return(

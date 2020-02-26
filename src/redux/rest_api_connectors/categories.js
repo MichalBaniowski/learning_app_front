@@ -1,15 +1,19 @@
+import { startFetchingCategories, fetchingSuccess, fetchingError } from "../actions/categories";
+
 const API = "http://localhost:3000/categories";
 
-const fetchCategories = (loaders) => (dispatch) => {
+const fetchCategories = () => (dispatch) => {
     try {
+        dispatch(startFetchingCategories());
         fetch(API)
             .then(response => response.json())
             .then(categories => {
-                if(loaders) loaders.forEach(loader => dispatch(loader(categories)))
+                console.log(categories, '--------------------');
+                dispatch(fetchingSuccess(categories))
             })
-            .catch(error => console.warn(error))
+            .catch(error => dispatch(fetchingError(error)))
     } catch (error) {
-        console.warn(error);
+        dispatch(fetchingError(error));
     }
 };
 

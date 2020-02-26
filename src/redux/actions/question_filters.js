@@ -1,22 +1,12 @@
-import {sourceSelectCategoryList} from "../selectors/cateogies";
-
-const LOAD_CATEGORIES = 'LOAD_CATEGORIES';
+const SET_SELECTED_CATEGORIES = 'SET_SELECTED_CATEGORIES';
 const SET_KEY_WORDS = 'SET_KEY_WORD';
 const SET_CUMULATIVE_CONDITION = 'SET_CUMULATIVE_CONDITION';
 const RESET_FILTERS = 'RESET_FILTERS';
-const SWITCH_CATEGORY = 'SWITCH_CATEGORY';
 
-const switchCategory = ( id ) => {
+const setSelectedCategories = (selectedCategories) => {
     return {
-        type: SWITCH_CATEGORY,
-        payload: parseInt(id)
-    }
-};
-
-const loadCategories = (categories ) => {
-    return {
-        type: LOAD_CATEGORIES,
-        payload: sourceSelectCategoryList(categories)
+        type: SET_SELECTED_CATEGORIES,
+        payload: selectedCategories
     }
 };
 
@@ -40,5 +30,5 @@ const resetFilters = () => {
     }
 };
 
-export { LOAD_CATEGORIES, SET_KEY_WORDS, SET_CUMULATIVE_CONDITION, RESET_FILTERS, SWITCH_CATEGORY,
-        loadCategories, setKeyWords, setCumulativeCondition, resetFilters, switchCategory }
+export { SET_SELECTED_CATEGORIES, SET_KEY_WORDS, SET_CUMULATIVE_CONDITION, RESET_FILTERS,
+        setSelectedCategories, setKeyWords, setCumulativeCondition, resetFilters }

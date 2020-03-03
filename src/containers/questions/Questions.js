@@ -10,7 +10,7 @@ const Questions = ({fetchQuestions, fetchCategories}) => {
 
     useEffect(() => {
         fetchQuestions();
-        fetchCategories();
+        // fetchCategories();
     }, []);
 
     return (

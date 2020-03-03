@@ -31,12 +31,32 @@ const QuestionFiltersComponent = ({ setKeywords, setCumulativeCondition, resetFi
                 id: 3,
                 name: 'gapa',
                 checked: false
+            },
+            {
+                id: 4,
+                name: 'sergserhgsets',
+                checked: false
+            },
+            {
+                id: 5,
+                name: 'fartheth',
+                checked: false
+            },
+            {
+                id: 6,
+                name: 'popolupo',
+                checked: false
+            },
+            {
+                id: 7,
+                name: 'czesio',
+                checked: true
             }
         ]
     };
 
-    const onCategoryCheck = (e) => {
-        console.log('check');
+    const onCategoryCheck = (id) => () => {
+        console.log(id);
     };
 
     return (
@@ -59,7 +79,6 @@ const QuestionFiltersComponent = ({ setKeywords, setCumulativeCondition, resetFi
 
 
 const mapState = ({questionFilters}) => {
-    console.log('********dawda********');
     return {
         questionFilters: questionFilters,
     }

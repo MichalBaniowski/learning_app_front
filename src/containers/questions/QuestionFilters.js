@@ -13,8 +13,6 @@ import {
 
 const QuestionFiltersComponent = ({ setKeywords, setCumulativeCondition, resetFilters, setSelectedCategories, questionFilters }) => {
 
-    const [ categoriesSourceFilter, setCategoriesSourceFilter ] = useState([]);
-
     const getCategories = () => {
         return[
             {
@@ -54,9 +52,15 @@ const QuestionFiltersComponent = ({ setKeywords, setCumulativeCondition, resetFi
             }
         ]
     };
+    const [ categoriesSourceFilter, setCategoriesSourceFilter ] = useState(getCategories());
 
-    const onCategoryCheck = (id) => () => {
-        console.log(id);
+    const onCategoryCheck = async (id) => {
+        const temporary = [...categoriesSourceFilter];
+        temporary.filter(category => category.id === id)
+            .forEach(category => {
+            category.checked = !category.checked;
+        });
+        setCategoriesSourceFilter([...temporary]);
     };
 
     return (
@@ -65,7 +69,7 @@ const QuestionFiltersComponent = ({ setKeywords, setCumulativeCondition, resetFi
                 <Col sm='3'>
                     <Form.Label>Kategorie</Form.Label>
                     <CustomMultipleSelect
-                        sourceElements={getCategories()}
+                        sourceElements={categoriesSourceFilter}
                         keyName='id'
                         labelName='name'
                         checkedName='checked'

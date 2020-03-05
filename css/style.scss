@@ -45,10 +45,6 @@ $border-color: #c3c3c3;
   background-color: #b6cdd4;
 }
 
-.accordion {
-  transition: 0.4s;
-}
-
 /* Style the accordion panel. Note: hidden by default */
 .multiselect-content-panel {
   background-color: white;
@@ -57,4 +53,12 @@ $border-color: #c3c3c3;
 }
 .show-panel {
   display: block;
+}
+.multiselect-search-field {
+  border: 1px solid $border-color;
+}
+.multiselect-filter {
+  display: inline;
+  border: 1px solid $border-color;
+  width: 100%;
 }
